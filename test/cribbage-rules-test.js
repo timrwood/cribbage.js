@@ -87,3 +87,58 @@ test("runs", 49, function() {
     equal(cribbage.scoreRuns([0,1,3,4,6]), 0, 'no runs');
     equal(cribbage.scoreRuns([0,2,5,6,8]), 0, 'no runs');
 });
+
+
+test("pairs", 46, function() {
+    equal(cribbage.scorePairs(), null, 'no input');
+    equal(cribbage.scorePairs([0,2,4,6]), null, 'too small input');
+
+    equal(cribbage.scorePairs([0,0,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([1,1,7,8,9]), 2, 'one pair');
+    equal(cribbage.scorePairs([2,2,7,8,9]), 2, 'one pair');
+    equal(cribbage.scorePairs([3,3,7,8,9]), 2, 'one pair');
+    equal(cribbage.scorePairs([4,4,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([5,5,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([6,6,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([7,7,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([8,8,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([9,9,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([10,10,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([11,11,1,2,3]), 2, 'one pair');
+    equal(cribbage.scorePairs([12,12,1,2,3]), 2, 'one pair');
+
+    equal(cribbage.scorePairs([0,0,1,1,2]), 4, 'two pair');
+    equal(cribbage.scorePairs([0,0,1,2,2]), 4, 'two pair');
+    equal(cribbage.scorePairs([0,1,1,2,2]), 4, 'two pair');
+
+    equal(cribbage.scorePairs([0,0,0,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([1,1,1,8,9]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([2,2,2,8,9]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([3,3,3,8,9]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([4,4,4,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([5,5,5,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([6,6,6,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([7,7,7,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([8,8,8,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([9,9,9,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([10,10,10,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([11,11,11,2,3]), 6, 'one pair royal');
+    equal(cribbage.scorePairs([12,12,12,2,3]), 6, 'one pair royal');
+
+    equal(cribbage.scorePairs([0,0,0,1,1]), 8, 'one pair and one pair royal');
+    equal(cribbage.scorePairs([0,0,1,1,1]), 8, 'one pair and one pair royal');
+
+    equal(cribbage.scorePairs([0,0,0,0,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([1,1,1,1,9]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([2,2,2,2,9]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([3,3,3,3,9]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([4,4,4,4,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([5,5,5,5,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([6,6,6,6,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([7,7,7,7,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([8,8,8,8,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([9,9,9,9,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([10,10,10,10,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([11,11,11,11,3]), 12, 'one double pair royal');
+    equal(cribbage.scorePairs([12,12,12,12,3]), 12, 'one double pair royal');
+});

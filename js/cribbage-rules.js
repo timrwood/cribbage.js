@@ -87,6 +87,43 @@
         return runs * pairs;
     };
 
+    /**
+     * method to score all pairs in a hand
+     *
+     * @param {Number[]} ranks A list of the 5 ranks in a hand
+     * 
+     * @returns {Number} Number of points scored
+     */
+    cribbage.scorePairs = function(ranks) {
+        var counts = [],
+            i,
+            output = 0;
+        // sanity check
+        if (!ranks || ranks.length != 5) {
+            return null;
+        }
+        // set to 0
+        for (i = 0; i < 13; i++) {
+            counts[i] = 0;
+        }
+        // add up counts
+        for (i = 0; i < 5; i++) {
+            counts[ranks[i]]++;
+        }
+        // loop though pairs
+        for (i = 0; i < 13; i++) {
+            if (counts[i] === 4) {
+                return 12;
+            }
+            if (counts[i] === 3) {
+                output += 6;
+            }
+            if (counts[i] === 2) {
+                output += 2;
+            }
+        }
+        return output;
+    };
 
     /**
      * method to score a hand
