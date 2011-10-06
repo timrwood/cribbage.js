@@ -1,0 +1,49 @@
+/* normalize.css 2011-07-06T20:20 UTC //github.com/jonathantneal/normalize.css */
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}html{cursor:default;font-size:100%;overflow-y:scroll;-webkit-tap-highlight-color:transparent;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body,form,input,button,select,textarea{font-size:100%;margin:0}a,a:active,a:hover{outline:none}a:focus{outline:thin dotted}abbr{_border-bottom:expression(this.title ? '1px dotted':'none')}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}mark{background:#FF0;color:#000}pre,code,kbd,samp{font-family:monospace,monospace;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small,sub,sup{font-size:75%}sub,sup{line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}nav ul{list-style:none}audio[controls],canvas,video{display:inline-block;*display:inline}audio{display:none;_display:expression(this.controls ? 'inline':'none');*zoom:1}audio[controls]{display:inline-block}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}legend{*margin-left:-7px}button,input,select,textarea{-webkit-appearance:none;border-radius:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal;_overflow:expression(this.type == 'button|reset|submit' ? 'visible':'')}button,input[type="button"],input[type="reset"],input[type="submit"]{overflow:visible}input[type="checkbox"],input[type="radio"]{box-sizing:border-box}input[type="search"]{-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+/***************
+ *   Base
+ ***************/
+
+
+
+/***************
+ *   Layout
+ ***************/
+
+html, body { width:100%; height:100%; overflow:hidden; padding:0; margin:0; }
+.l-container { width:100%; height:100%; overflow:hidden; display:relative; background:url(../img/bg.jpg); }
+.l-score { width:10%; left:0; top:0; bottom:0; position:absolute; }
+.l-field { width:90%; right:0; top:0; bottom:0; position:absolute; }
+.l-row { left:0; right:0; position:absolute; }
+.l-row-ai { height:30%; top:0; }
+.l-row-player { height:30%; bottom:0; }
+.l-row-banter { height:40%; top:30%; }
+.l-col { top:0; bottom:0; position:absolute; }
+.l-col-deck { width:25%; left:0; }
+.l-col-hand { width:50%; left:25%; }
+.l-col-crib { width:25%; right:0; }
+
+/***************
+ *   State
+ ***************/
+
+
+
+/***************
+ *   Modules
+ ***************/
+
+
+
+/***************
+ *   Debug
+ ***************/
+
+
+
+
+
+
+
+
