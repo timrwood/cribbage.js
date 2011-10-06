@@ -126,6 +126,86 @@
     };
 
     /**
+     * private method to tally fifteens
+     *
+     * @param {Number[]} numbers The numbers to count up
+     * 
+     * @returns {Number} 2 if equals 15, 0 if not
+     */
+    function isEqualToFifteen(numbers) {
+        var total = 0, i;
+        for (i = 0; i < numbers.length; i++) {
+            total += numbers[i];
+        }
+        return total === 15 ? 2 : 0;
+    }
+
+    /**
+     * method to score all fifteens in a hand
+     *
+     * @param {Number[]} ranks A list of the 5 ranks in a hand
+     * 
+     * @returns {Number} Number of points scored
+     */
+    cribbage.scoreFifteens = function(ranks) {
+        var output = 0,
+            cards = [],
+            i, j, k, l, m;
+        // sanity check
+        if (!ranks || ranks.length != 5) {
+            return null;
+        }
+        // populate cards
+        for (i = 0; i < 5; i ++) {
+            cards[i] = Math.min(ranks[i] + 1, 10);
+        }
+        // check for five card fifteens, return early
+        if (isEqualToFifteen(cards)) {
+            return 2;
+        }
+        // loop through items
+        for (i = 0; i < 5; i++) {
+            for (j = i + 1; j < 5; j++) {
+                // two card fifteens
+                output += isEqualToFifteen([cards[i], cards[j]]);
+                for (k = j + 1; k < 5; k++) {
+                    // three card fifteens
+                    output += isEqualToFifteen([cards[i], cards[j], cards[k]]);
+                    for (l = k + 1; l < 5; l ++) {
+                        // four card fifteens
+                        output += isEqualToFifteen([cards[i], cards[j], cards[k], cards[l]]);
+                    }
+                }
+            }
+        }
+        /*
+        for (var s:uint=0; s<5; s++) {
+            for (var t:uint=s+1; t<5; t++) {
+                if (caAR[s]+caAR[t]==15) {
+                    score+=2;
+                }
+                for (var u:uint=t+1; u<5; u++) {
+                    if (caAR[s]+caAR[t]+caAR[u]==15) {
+                        score+=2;
+                    }
+                    for (var v:uint=u+1; v<5; v++) {
+                        if (caAR[s]+caAR[t]+caAR[u]+caAR[v]==15) {
+                            score+=2;
+                        }
+                        for (var w:uint=v+1; w<5; w++) {
+                            if (caAR[s]+caAR[t]+caAR[u]+caAR[v]+caAR[w]==15) {
+                                score+=2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        */
+        return output;
+    };
+
+    /**
      * method to score a hand
      *
      * @param {Number[]} hand A list of cards in the hand
