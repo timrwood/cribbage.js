@@ -54,7 +54,7 @@ html { background:#AFBAC4; text-align:center; color:#445; }
 
 a { color:#09489A; }
 
-h1, h2, h3, h4, h5, h6, th { font-family:Oswald, sans-serif; line-height:1.5em; margin-bottom:20px; text-shadow:1px 1px 0 rgba(255, 255, 255, .4); }
+h1, h2, h3, h4, h5, h6, th { font-family:Helvetica, Arial, sans-serif; line-height:1.5em; margin-bottom:20px; text-shadow:1px 1px 0 rgba(255, 255, 255, .4); }
 
 h1 { font-size:48px; padding-top:40px; }
 h2 { font-size:36px; padding-top:20px; }
