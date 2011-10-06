@@ -50,7 +50,7 @@ input, select { vertical-align: middle; }
  */
  
  
-html { background:#AFBAC4 url(../site/bg.png); text-align:center; color:#445; }
+html { background:#AFBAC4; text-align:center; color:#445; }
 
 a { color:#09489A; }
 
@@ -94,7 +94,7 @@ b, strong { font-weight:bold; }
  */
 
 
-#container { background:url(../site/bg-body.png); margin:0 auto; width:960px; padding:20px 40px; text-align:left; }
+#container { margin:0 auto; width:960px; padding:20px 40px; text-align:left; }
 .footer { text-align:center; padding:50px 0 200px; }
 
 
