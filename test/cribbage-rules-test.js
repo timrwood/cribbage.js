@@ -141,7 +141,7 @@ test("pairs", 46, function() {
     equal(cribbage.scorePairs([12,12,12,12,3]), 12, 'one double pair royal');
 });
 
-test("fifteens 2 cards", 0, function() {
+test("fifteens 2 cards", 8, function() {
     equal(cribbage.scoreFifteens(), null, 'no input');
     equal(cribbage.scoreFifteens([0,2,4,6]), null, 'too small input');
 
@@ -153,11 +153,15 @@ test("fifteens 2 cards", 0, function() {
     equal(cribbage.scoreFifteens([0,0,0,6,7]), 2, '2 cards 7 8');
 });
 
-
-
-test("fifteens 3 cards", 0, function() {
-    equal(cribbage.scoreFifteens([0,3,8,8,9]), 2, '3 cards A 4 X');
-    equal(cribbage.scoreFifteens([1,2,8,8,9]), 2, '3 cards 2 3 X');
+test("fifteens 3 cards", 21, function() {
+    equal(cribbage.scoreFifteens([0,3,8,8,9]), 2, '3 cards A 4 10');
+    equal(cribbage.scoreFifteens([1,2,8,8,9]), 2, '3 cards 2 3 10');
+    equal(cribbage.scoreFifteens([0,3,8,8,10]), 2, '3 cards A 4 J');
+    equal(cribbage.scoreFifteens([1,2,8,8,10]), 2, '3 cards 2 3 J');
+    equal(cribbage.scoreFifteens([0,3,8,8,11]), 2, '3 cards A 4 Q');
+    equal(cribbage.scoreFifteens([1,2,8,8,11]), 2, '3 cards 2 3 Q');
+    equal(cribbage.scoreFifteens([0,3,8,8,12]), 2, '3 cards A 4 K');
+    equal(cribbage.scoreFifteens([1,2,8,8,12]), 2, '3 cards 2 3 K');
     equal(cribbage.scoreFifteens([0,4,8,7,7]), 2, '3 cards A 5 9');
     equal(cribbage.scoreFifteens([1,3,8,9,9]), 2, '3 cards 2 4 9');
     equal(cribbage.scoreFifteens([2,2,8,9,9]), 2, '3 cards 3 3 9');
@@ -171,4 +175,85 @@ test("fifteens 3 cards", 0, function() {
     equal(cribbage.scoreFifteens([2,5,5,9,9]), 2, '3 cards 3 6 6');
     equal(cribbage.scoreFifteens([3,4,5,0,0]), 2, '3 cards 4 5 6');
     equal(cribbage.scoreFifteens([4,4,4,0,0]), 2, '3 cards 5 5 5');
+});
+
+test("fifteens 4 cards", 31, function() {
+    equal(cribbage.scoreFifteens([0,0,2,8,9]), 2, '4 cards A A 3 10');
+    equal(cribbage.scoreFifteens([0,0,2,8,10]), 2, '4 cards A A 3 J');
+    equal(cribbage.scoreFifteens([0,0,2,8,11]), 2, '4 cards A A 3 Q');
+    equal(cribbage.scoreFifteens([0,0,2,8,12]), 2, '4 cards A A 3 K');
+
+    equal(cribbage.scoreFifteens([0,1,1,8,9]), 2, '4 cards A 2 2 10');
+    equal(cribbage.scoreFifteens([0,1,1,8,10]), 2, '4 cards A 2 2 J');
+    equal(cribbage.scoreFifteens([0,1,1,8,11]), 2, '4 cards A 2 2 Q');
+    equal(cribbage.scoreFifteens([0,1,1,8,12]), 2, '4 cards A 2 2 K');
+
+    equal(cribbage.scoreFifteens([0,0,3,8,7]), 2, '4 cards A A 4 9');
+    equal(cribbage.scoreFifteens([0,1,2,8,7]), 2, '4 cards A 2 3 9');
+    equal(cribbage.scoreFifteens([1,1,1,8,7]), 2, '4 cards 2 2 2 9');
+
+    equal(cribbage.scoreFifteens([0,0,4,7,2]), 2, '4 cards A A 5 8');
+    equal(cribbage.scoreFifteens([0,1,3,7,7]), 4, '4 cards A 2 4 8');// can't test only one
+    equal(cribbage.scoreFifteens([0,2,2,7,4]), 2, '4 cards A 3 3 8');
+    equal(cribbage.scoreFifteens([1,1,2,7,0]), 2, '4 cards 2 2 3 8');
+
+    equal(cribbage.scoreFifteens([0,0,5,6,4]), 2, '4 cards A A 6 7');
+    equal(cribbage.scoreFifteens([0,1,4,6,3]), 2, '4 cards A 2 5 7');
+    equal(cribbage.scoreFifteens([0,2,3,6,8]), 2, '4 cards A 3 4 7');
+    equal(cribbage.scoreFifteens([1,1,3,6,4]), 2, '4 cards 2 2 4 7');
+    equal(cribbage.scoreFifteens([1,2,2,6,0]), 2, '4 cards 2 3 3 7');
+
+    equal(cribbage.scoreFifteens([0,1,5,5,4]), 2, '4 cards A 2 6 6');
+    equal(cribbage.scoreFifteens([0,2,4,5,1]), 2, '4 cards A 3 5 6');
+    equal(cribbage.scoreFifteens([1,1,4,5,0]), 2, '4 cards 2 2 5 6');
+    equal(cribbage.scoreFifteens([0,3,3,5,2]), 2, '4 cards A 4 4 6');
+    equal(cribbage.scoreFifteens([1,2,3,5,9]), 4, '4 cards 2 3 4 6');// can't test only one
+    equal(cribbage.scoreFifteens([2,2,2,5,3]), 2, '4 cards 3 3 3 6');
+
+    equal(cribbage.scoreFifteens([0,3,4,4,7]), 2, '4 cards A 4 5 5');
+    equal(cribbage.scoreFifteens([1,2,4,4,0]), 2, '4 cards 2 3 5 5');
+    equal(cribbage.scoreFifteens([1,3,3,4,0]), 2, '4 cards 2 4 4 5');
+    equal(cribbage.scoreFifteens([2,2,3,4,0]), 2, '4 cards 3 3 4 5');
+
+    equal(cribbage.scoreFifteens([2,3,3,3,12]), 2, '4 cards 3 4 4 4');
+});
+
+test("fifteens 5 cards", 31, function() {
+    equal(cribbage.scoreFifteens([0,0,0,1,9]), 2, '5 cards A A 3 10');
+    equal(cribbage.scoreFifteens([0,0,0,1,10]), 2, '5 cards A A 3 J');
+    equal(cribbage.scoreFifteens([0,0,0,1,11]), 2, '5 cards A A 3 Q');
+    equal(cribbage.scoreFifteens([0,0,0,1,12]), 2, '5 cards A A 3 K');
+
+    equal(cribbage.scoreFifteens([0,0,0,2,8]), 2, '5 cards A A A 3 9');
+    equal(cribbage.scoreFifteens([0,0,1,1,8]), 2, '5 cards A A 2 2 9');
+
+    equal(cribbage.scoreFifteens([0,0,0,3,7]), 2, '5 cards A A A 4 8');
+    equal(cribbage.scoreFifteens([0,0,1,2,7]), 2, '5 cards A A 2 3 8');
+    equal(cribbage.scoreFifteens([0,1,1,1,7]), 2, '5 cards A 2 2 2 8');
+
+    equal(cribbage.scoreFifteens([0,0,0,4,6]), 2, '5 cards A A A 5 7');
+    equal(cribbage.scoreFifteens([0,0,1,3,6]), 2, '5 cards A A 2 4 7');
+    equal(cribbage.scoreFifteens([0,0,2,2,6]), 2, '5 cards A A 3 3 7');
+    equal(cribbage.scoreFifteens([0,1,1,2,6]), 2, '5 cards A 2 2 3 7');
+    equal(cribbage.scoreFifteens([1,1,1,1,6]), 2, '5 cards 2 2 2 2 7');
+
+    equal(cribbage.scoreFifteens([0,0,0,5,5]), 2, '5 cards A A A 6 6');
+    equal(cribbage.scoreFifteens([0,0,1,4,5]), 2, '5 cards A A 2 5 6');
+    equal(cribbage.scoreFifteens([0,0,2,3,5]), 2, '5 cards A A 3 4 6');
+    equal(cribbage.scoreFifteens([0,1,1,3,5]), 2, '5 cards A 2 2 4 6');
+    equal(cribbage.scoreFifteens([0,1,2,2,5]), 2, '5 cards A 2 3 3 6');
+    equal(cribbage.scoreFifteens([1,1,1,2,5]), 2, '5 cards 2 2 2 3 6');
+
+    equal(cribbage.scoreFifteens([0,0,2,4,4]), 2, '5 cards A A 3 5 5');
+    equal(cribbage.scoreFifteens([0,1,1,4,4]), 2, '5 cards A 2 2 5 5');
+    equal(cribbage.scoreFifteens([0,0,3,3,4]), 2, '5 cards A A 4 4 5');
+    equal(cribbage.scoreFifteens([0,1,2,3,4]), 2, '5 cards A 2 3 4 5');
+    equal(cribbage.scoreFifteens([1,1,1,3,4]), 2, '5 cards 2 2 2 4 5');
+    equal(cribbage.scoreFifteens([0,2,2,2,4]), 2, '5 cards A 3 3 3 5');
+    equal(cribbage.scoreFifteens([1,1,2,2,4]), 2, '5 cards 2 2 3 3 5');
+
+    equal(cribbage.scoreFifteens([0,1,3,3,3]), 2, '5 cards A 2 4 4 4');
+    equal(cribbage.scoreFifteens([0,2,2,3,3]), 2, '5 cards A 3 3 4 4');
+    equal(cribbage.scoreFifteens([1,1,2,3,3]), 2, '5 cards 2 2 3 4 4');
+    equal(cribbage.scoreFifteens([1,2,2,2,3]), 2, '5 cards 2 3 3 3 4');
 });
