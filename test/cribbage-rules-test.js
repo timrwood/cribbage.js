@@ -7,6 +7,28 @@
 
 module("score");
 
+test("getRank", 8, function() {
+    equal(cribbage.getRank(0), 0, 'rank A');
+    equal(cribbage.getRank(12), 12, 'rank K');
+    equal(cribbage.getRank(13), 0, 'rank A');
+    equal(cribbage.getRank(25), 12, 'rank K');
+    equal(cribbage.getRank(26), 0, 'rank A');
+    equal(cribbage.getRank(38), 12, 'rank K');
+    equal(cribbage.getRank(39), 0, 'rank A');
+    equal(cribbage.getRank(51), 12, 'rank K');
+});
+
+test("getSuit", 8, function() {
+    equal(cribbage.getSuit(0), 0, 'suit A 0');
+    equal(cribbage.getSuit(12), 0, 'suit K 0');
+    equal(cribbage.getSuit(13), 1, 'suit A 1');
+    equal(cribbage.getSuit(25), 1, 'suit K 1');
+    equal(cribbage.getSuit(26), 2, 'suit A 2');
+    equal(cribbage.getSuit(38), 2, 'suit K 2');
+    equal(cribbage.getSuit(39), 3, 'suit A 3');
+    equal(cribbage.getSuit(51), 3, 'suit K 3');
+});
+
 test("flushes", 15, function() {
     equal(cribbage.scoreFlushes(), null, 'no input');
     equal(cribbage.scoreFlushes([0,2,4,6]), null, 'too small input');
@@ -256,4 +278,12 @@ test("fifteens 5 cards", 31, function() {
     equal(cribbage.scoreFifteens([0,2,2,3,3]), 2, '5 cards A 3 3 4 4');
     equal(cribbage.scoreFifteens([1,1,2,3,3]), 2, '5 cards 2 2 3 4 4');
     equal(cribbage.scoreFifteens([1,2,2,2,3]), 2, '5 cards 2 3 3 3 4');
+});
+
+test("nobs", 5, function() {
+    equal(cribbage.scoreNobs([0,1,2,4,9]), 0, 'no nobs');
+    equal(cribbage.scoreNobs([1,2,3,10,0]), 1, 'nobs suit 1');
+    equal(cribbage.scoreNobs([1,2,3,23,13]), 1, 'nobs suit 2');
+    equal(cribbage.scoreNobs([1,2,3,36,26]), 1, 'nobs suit 3');
+    equal(cribbage.scoreNobs([1,2,3,49,39]), 1, 'nobs suit 4');
 });

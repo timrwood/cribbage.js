@@ -7,6 +7,45 @@
     var cribbage = {};
 
     /**
+     * private method to convert card number to suit
+     *
+     * @param {Number} card The card number (0-51)
+     * 
+     * @returns {Number} The suit of the card (0-3)
+     */
+    function getSuit(number) {
+        return Math.floor(number / 13);
+    }
+    cribbage.getSuit = getSuit;
+
+    /**
+     * private method to convert card number to rank
+     *
+     * @param {Number} card The card number (0-51)
+     * 
+     * @returns {Number} The rank of the card (0-12)
+     */
+    function getRank(number) {
+        return number % 13;
+    }
+    cribbage.getRank = getRank;
+
+    /**
+     * private method to tally fifteens
+     *
+     * @param {Number[]} numbers The numbers to count up
+     * 
+     * @returns {Number} 2 if equals 15, 0 if not
+     */
+    function isEqualToFifteen(numbers) {
+        var total = 0, i;
+        for (i = 0; i < numbers.length; i++) {
+            total += numbers[i];
+        }
+        return total === 15 ? 2 : 0;
+    }
+
+    /**
      * method to score all flushes in a hand
      *
      * @param {Number[]} suits A list of the 5 suits in a hand
@@ -126,21 +165,6 @@
     };
 
     /**
-     * private method to tally fifteens
-     *
-     * @param {Number[]} numbers The numbers to count up
-     * 
-     * @returns {Number} 2 if equals 15, 0 if not
-     */
-    function isEqualToFifteen(numbers) {
-        var total = 0, i;
-        for (i = 0; i < numbers.length; i++) {
-            total += numbers[i];
-        }
-        return total === 15 ? 2 : 0;
-    }
-
-    /**
      * method to score all fifteens in a hand
      *
      * @param {Number[]} ranks A list of the 5 ranks in a hand
@@ -178,31 +202,28 @@
                 }
             }
         }
-        /*
-        for (var s:uint=0; s<5; s++) {
-            for (var t:uint=s+1; t<5; t++) {
-                if (caAR[s]+caAR[t]==15) {
-                    score+=2;
-                }
-                for (var u:uint=t+1; u<5; u++) {
-                    if (caAR[s]+caAR[t]+caAR[u]==15) {
-                        score+=2;
-                    }
-                    for (var v:uint=u+1; v<5; v++) {
-                        if (caAR[s]+caAR[t]+caAR[u]+caAR[v]==15) {
-                            score+=2;
-                        }
-                        for (var w:uint=v+1; w<5; w++) {
-                            if (caAR[s]+caAR[t]+caAR[u]+caAR[v]+caAR[w]==15) {
-                                score+=2;
-                            }
-                        }
-                    }
-                }
+        return output;
+    };
+
+    /**
+     * method to score all fifteens in a hand
+     *
+     * @param {Number[]} cards A list of the cards in a hand (0-51)
+     * 
+     * @returns {Number} Number of points scored (0 or 1)
+     */
+    cribbage.scoreNobs = function(cards) {
+        // sanity check
+        if (!cards || cards.length != 5) {
+            return null;
+        }
+        // check for nobs
+        for (i = 0; i < 4; i ++) {
+            if (getRank(cards[i]) === 10 && getSuit(cards[i]) === getSuit(cards[4])) {
+                return 1;
             }
         }
-        */
-        return output;
+        return 0;
     };
 
     /**
